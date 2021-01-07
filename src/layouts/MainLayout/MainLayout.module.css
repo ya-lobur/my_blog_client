@@ -1,0 +1,7 @@
+.main_layout {
+    min-height: 100vh;
+}
+
+.main_layout .header {
+    background: #fff;
+}
