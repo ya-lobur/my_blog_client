@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import { IPost } from "interfaces/post";
 import { getDailyTopPosts } from "async_actions/post";
 import PostCard from './PostCard/PostCard';
-import { Col, Row } from "antd";
+import { Col, Row, Spin } from "antd";
 import classes from './DailyPostList.module.css'
 
 const DailyPostList: FunctionComponent = () => {
@@ -26,7 +26,7 @@ const DailyPostList: FunctionComponent = () => {
                         }
                     </Row>
                 )
-                : null
+                : <Spin size="large" />
             }
         </div>
     );
