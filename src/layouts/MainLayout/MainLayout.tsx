@@ -13,7 +13,7 @@ const MainLayout: FunctionComponent = ({ children }) => {
 
             <Layout>
                 <Header className={classes.header}/>
-                <Content>
+                <Content className={classes.content}>
                     {children}
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>"My Blog" Created by Ya-Lobur ©2021</Footer>
