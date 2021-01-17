@@ -1,10 +1,11 @@
 import { ComponentType } from 'react';
 import IndexPage from "pages/IndexPage/IndexPage";
+import PostDetail from "pages/post/PostDetail/PostDetail";
 
 export enum RouteTemplates {
     ROOT = '/',
     BLOG = '/blog',
-    BLOG_DETAIL = '/blog/:id'
+    POST_DETAIL = '/post/:id'
 }
 
 interface IAppRoute {
@@ -17,6 +18,10 @@ const routes: IAppRoute[] = [
     {
         path: RouteTemplates.ROOT,
         component: IndexPage
+    },
+    {
+        path: RouteTemplates.POST_DETAIL,
+        component: PostDetail
     },
 ]
 

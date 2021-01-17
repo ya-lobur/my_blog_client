@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { Button, Card } from "antd";
 import { HeartTwoTone, ReadOutlined } from "@ant-design/icons";
+import { generatePath, Link } from "react-router-dom";
+import { RouteTemplates } from "constants/routes";
 
 interface IPostCard {
     id: number;
@@ -10,10 +12,12 @@ interface IPostCard {
 }
 
 const PostCard: FunctionComponent<IPostCard> = (props) => {
-    const { title, description, totalLikes } = props;
+    const { title, description, totalLikes, id } = props;
 
     const actions = [
-        <Button icon={<ReadOutlined/>} children={'Читать'} type={"primary"}/>
+        <Link to={generatePath(RouteTemplates.POST_DETAIL, {id})}>
+            <Button icon={<ReadOutlined/>} children={'Читать'} type={"primary"}/>
+        </Link>
     ]
 
 
