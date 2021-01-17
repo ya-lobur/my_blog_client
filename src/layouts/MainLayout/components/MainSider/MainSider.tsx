@@ -13,7 +13,7 @@ const MainSider: FunctionComponent = (props) => {
 
     return (
         <Sider collapsible collapsed={collapsed} onCollapse={(collapsed) => setCollapsed(collapsed)}>
-            <Menu mode="inline" theme={"dark"} className={classes.main_sider} defaultSelectedKeys={[RouteTemplates.ROOT]}>
+            <Menu mode="inline" theme={"dark"} className={classes.main_sider}>
 
                 <Menu.Item key={RouteTemplates.ROOT} icon={<HomeOutlined />}>
                     <Link to={RouteTemplates.ROOT} >На главную</Link>
