@@ -14,7 +14,7 @@ const DailyPostList: FunctionComponent = () => {
 
 
     return (
-        <div className={classes.DailyPostList}>
+        <div className={classes.daily_post_list}>
             {topPosts
                 ? renderPostList(topPosts)
                 : <Spin size="large"/>
