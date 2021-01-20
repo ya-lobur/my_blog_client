@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { IPost } from "interfaces/post";
+import { IPostModel } from "interfaces/post";
 import { getDailyTopPosts } from "async_actions/post";
 import { Spin } from "antd";
 import classes from './DailyPostList.module.css'
 import { renderPostList } from './utils';
 
 const DailyPostList: FunctionComponent = () => {
-    const [topPosts, setTopPosts] = useState<Required<IPost>[] | null>(null);
+    const [topPosts, setTopPosts] = useState<Required<IPostModel>[] | null>(null);
 
     useEffect(() => {
         getDailyTopPosts().then((posts) => setTopPosts(posts))

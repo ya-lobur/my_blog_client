@@ -1,10 +1,10 @@
 import React from "react";
-import { IPost } from "interfaces/post";
+import { IPostModel } from "interfaces/post";
 import { Col, Empty, Row } from "antd";
 import PostCard from "./PostCard/PostCard";
 
 
-export const renderPostList = (posts: Required<IPost>[]) => {
+export const renderPostList = (posts: Required<IPostModel>[]) => {
     if (posts.length) {
         return (
             <Row justify={'space-between'} gutter={[16, 32]}>

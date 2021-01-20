@@ -1,4 +1,4 @@
-export interface IPost {
+export interface IPostModel {
     id?: number;
     blog_id?: number;
     title?: string;
