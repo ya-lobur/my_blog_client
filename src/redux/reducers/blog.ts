@@ -1,11 +1,11 @@
 import { reducerWithInitialState } from "typescript-fsa-reducers";
 import { setPostList } from "redux/actionCreators/blog";
 
-export interface IBlog {
+export interface IBlogReducer {
     posts: any;
 }
 
-const INITIAL_STATE: IBlog = {
+const INITIAL_STATE: IBlogReducer = {
     posts: [],
 };
 
