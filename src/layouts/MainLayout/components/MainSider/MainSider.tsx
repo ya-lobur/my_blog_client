@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Layout, Menu } from "antd";
-import { DesktopOutlined, FileOutlined, HomeOutlined } from "@ant-design/icons";
+import { DesktopOutlined, FileOutlined, HomeOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import classes from './MainSider.module.css'
 import { Link } from 'react-router-dom';
 import { RouteTemplates } from "constants/routes";
@@ -19,8 +19,8 @@ const MainSider: FunctionComponent = (props) => {
                     <Link to={RouteTemplates.ROOT} >На главную</Link>
                 </Menu.Item>
 
-                <Menu.Item key="2" icon={<DesktopOutlined/>}>
-                    Option 2
+                <Menu.Item key={RouteTemplates.POST_CREATE} icon={<PlusCircleOutlined />}>
+                    <Link to={RouteTemplates.POST_CREATE} >Создать пост</Link>
                 </Menu.Item>
 
                 <Menu.Item key="9" icon={<FileOutlined/>}>

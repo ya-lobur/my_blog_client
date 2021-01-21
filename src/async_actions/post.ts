@@ -54,3 +54,19 @@ export function likePost(postId: number | string) {
         }
     }
 }
+
+/**
+ * Делает запрос на создание поста
+ * @param {IPostModel} post
+ * @returns {Promise<Required<IPostModel>>}
+ */
+export async function createPost(post: IPostModel) {
+    try {
+        const response = await axios.post(`${API_HOST}blog/post/`, post)
+        const createdPost: Required<IPostModel> = response.data
+
+        return Promise.resolve(createdPost)
+    } catch (err) {
+        return Promise.reject({ error: err.response, location: 'createPost' })
+    }
+}

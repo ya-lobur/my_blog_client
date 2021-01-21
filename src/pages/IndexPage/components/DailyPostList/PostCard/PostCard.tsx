@@ -5,17 +5,17 @@ import { generatePath, Link } from "react-router-dom";
 import { RouteTemplates } from "constants/routes";
 
 interface IPostCard {
-    id: number;
+    postId: number;
     title: string;
     description: string;
     totalLikes: number;
 }
 
 const PostCard: FunctionComponent<IPostCard> = (props) => {
-    const { title, description, totalLikes, id } = props;
+    const { title, description, totalLikes, postId } = props;
 
     const actions = [
-        <Link to={generatePath(RouteTemplates.POST_DETAIL, {id})}>
+        <Link to={generatePath(RouteTemplates.POST_DETAIL, {postId})}>
             <Button icon={<ReadOutlined/>} children={'Читать'} type={"primary"}/>
         </Link>
     ]

@@ -8,8 +8,8 @@ const AppRouter: FunctionComponent = () => {
     return (
         <BrowserRouter>
             <Switch>
-                {routes.map(({ path, component: Component, pageLayout: PageLayout = Fragment }) => (
-                    <Route key={path} path={path}  exact>
+                {routes.map(({ path, component: Component, pageLayout: PageLayout = Fragment }, index) => (
+                    <Route key={index} path={path}  exact>
                         <MainLayout>
                             <PageLayout>
                                 <Component/>

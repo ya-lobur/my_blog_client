@@ -12,7 +12,7 @@ const { Title, Paragraph } = Typography;
 
 const PostDetail: FunctionComponent = () => {
     const dispatch = useDispatch();
-    const { id: postId } = useParams<{ id: string }>();
+    const { postId } = useParams<{ postId: string }>();
     const currentPost = useSelector((state: AppState) => state.post.currentPost);
 
     useEffect(() => {

@@ -11,7 +11,7 @@ export const renderPostList = (posts: Required<IPostModel>[]) => {
                 {
                     posts.map(post => (
                         <Col span={8} key={post.id}>
-                            <PostCard id={post.id} title={post.title} description={post.description} totalLikes={post.liked_by.length}/>
+                            <PostCard postId={post.id} title={post.title} description={post.description} totalLikes={post.liked_by.length}/>
                         </Col>
                     ))
                 }
