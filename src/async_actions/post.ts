@@ -20,16 +20,20 @@ export async function getDailyTopPosts() {
 /**
  * Делает запрос на получение определенного поста, в случае успеха помещает его в state
  * @param {string | number} postId
+ * @param saveToState
  * @returns {(dispatch) => Promise<void>}
  */
-export function getCertainPost(postId: string | number) {
+export function getCertainPost(postId: string | number, saveToState: boolean = true) {
     return async (dispatch) => {
         try {
             const response = await axios.get(`${API_HOST}blog/post/${postId}/`);
             const post: Required<IPostModel> = response.data;
 
-            dispatch(setCurrentPost(post));
-            return Promise.resolve();
+            if (saveToState) {
+                dispatch(setCurrentPost(post));
+            }
+
+            return Promise.resolve(post);
         } catch (err) {
             return Promise.reject({ error: err.response, location: 'getCertainPost' })
         }

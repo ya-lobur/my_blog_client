@@ -4,28 +4,37 @@ import { Col, Row, Typography } from "antd";
 import { Form, Input, Button } from 'antd';
 import { useParams } from "react-router";
 import TextArea from "antd/es/input/TextArea";
-import { Simulate } from "react-dom/test-utils";
-import { createPost } from "async_actions/post";
+import { createPost, getCertainPost } from "async_actions/post";
+import { useDispatch } from "react-redux";
+import { IPostModel } from "interfaces/post";
+import { getSubmitBtnTitle, getTitle } from "pages/post/wizard/PostWizard/utils";
 
 const { Title } = Typography
 
-const PostWizard: FunctionComponent = () => {
+export type WizardModeType = 'create' | 'update' | undefined;
 
+const PostWizard: FunctionComponent = () => {
     const [form] = Form.useForm();
-    const { postId } = useParams<{ postId: string }>()
-    const [wizardMode, setWizardMode] = useState<'create' | 'update' | undefined>(undefined);
+    const dispatch = useDispatch<(f) => Promise<Required<IPostModel>>>();
+    const { postId } = useParams<{ postId: string }>();
+    const [wizardMode, setWizardMode] = useState<WizardModeType>(undefined);
 
     useEffect(() => {
+        form.resetFields();
         if (postId) {
-            setWizardMode("update")
+            setWizardMode("update");
+            dispatch(getCertainPost(postId, false)).then((data) => {
+                form.setFieldsValue(data)
+            })
         } else {
-            setWizardMode("create")
+            setWizardMode("create");
         }
     }, [postId]);
 
+
     async function onSubmitHandler(values) {
         if (wizardMode === "create") {
-          await createPost(values)
+            await createPost(values)
         }
     }
 
@@ -33,7 +42,7 @@ const PostWizard: FunctionComponent = () => {
     return (
         <div className={classes.post_wizard}>
             <Row>
-                <Col><Title level={1}>Добавление поста</Title></Col>
+                <Col><Title level={1}>{getTitle(wizardMode)}</Title></Col>
             </Row>
 
             <Row className={classes.form}>
@@ -58,13 +67,13 @@ const PostWizard: FunctionComponent = () => {
                         <Row>
                             <Col span={24}>
                                 <Form.Item name={'text_content'} label={'Текст поста'}>
-                                    <TextArea rows={4} size={"large"}/>
+                                    <TextArea rows={10} size={"large"}/>
                                 </Form.Item>
                             </Col>
                         </Row>
 
                         <Button htmlType={"submit"} type={"primary"} className={classes.submit_btn}>
-                            Создать
+                            {getSubmitBtnTitle(wizardMode)}
                         </Button>
                     </Form>
                 </Col>
