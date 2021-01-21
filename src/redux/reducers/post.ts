@@ -3,7 +3,7 @@ import { IPostModel } from "interfaces/post";
 import { setCurrentPost } from "redux/actionCreators/post";
 
 export interface IPostReducer {
-    currentPost?: IPostModel;
+    currentPost?: Required<IPostModel>;
 }
 
 const INITIAL_STATE: IPostReducer = {};

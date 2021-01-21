@@ -35,3 +35,22 @@ export function getCertainPost(postId: string | number) {
         }
     }
 }
+
+/**
+ * Отправляет запрос на лайк поста, обновляет currentPost в state постов
+ * @param {number | string} postId
+ * @returns {(dispatch) => Promise<void>}
+ */
+export function likePost(postId: number | string) {
+    return async (dispatch) => {
+        try {
+            const response = await axios.patch(`${API_HOST}blog/post/${postId}/like/`)
+            const post: Required<IPostModel> = response.data;
+
+            dispatch(setCurrentPost(post));
+            return Promise.resolve();
+        } catch (err) {
+            return Promise.reject({ error: err.response, location: 'likePost' })
+        }
+    }
+}

@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect } from 'react';
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "redux/reducers/rootReducer";
-import { getCertainPost } from "async_actions/post";
+import { getCertainPost, likePost } from "async_actions/post";
 import { Button, Card, Col, Divider, Row, Space } from "antd";
 import classes from './PostDetail.module.css'
 import { Typography } from 'antd';
@@ -20,6 +20,7 @@ const PostDetail: FunctionComponent = () => {
     }, [postId]);
 
 
+
     return (
         <div className={classes.post_detail}>
             {currentPost && (
@@ -34,7 +35,7 @@ const PostDetail: FunctionComponent = () => {
                     <Row justify={"end"}>
                         <Col>
                             <Space>
-                                <Button icon={<HeartTwoTone/>} type={"dashed"}>
+                                <Button icon={<HeartTwoTone/>} type={"dashed"} onClick={() => dispatch(likePost(currentPost.id))}>
                                     <span>{currentPost?.liked_by?.length}</span>
                                 </Button>
                             </Space>
