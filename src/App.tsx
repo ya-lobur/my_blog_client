@@ -3,20 +3,19 @@ import { Provider } from 'react-redux'
 import store from './redux/store';
 import './App.css';
 import AppRouter from 'layouts/AppRouter/AppRouter';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider as AntConfigProvider } from 'antd';
 import locale from 'antd/es/locale/ru_RU';
-import moment from 'moment';
-import 'moment/locale/ru';
-
-moment.locale('ru');
+import AppConfig from "layouts/AppConfig/AppConfig";
 
 
 function App() {
     return (
         <Provider store={store}>
-            <ConfigProvider locale={locale}>
-                <AppRouter/>
-            </ConfigProvider>
+            <AntConfigProvider locale={locale}>
+                <AppConfig>
+                    <AppRouter/>
+                </AppConfig>
+            </AntConfigProvider>
         </Provider>
     );
 }
