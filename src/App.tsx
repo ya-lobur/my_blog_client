@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux'
 import store from './redux/store';
-import './App.css';
+import 'App.less';
 import AppRouter from 'layouts/AppRouter/AppRouter';
 import { ConfigProvider as AntConfigProvider } from 'antd';
 import locale from 'antd/es/locale/ru_RU';
