@@ -11,7 +11,7 @@ const BlogDetail: FunctionComponent = () => {
 
     useEffect(() => {
         dispatch(getPostList(blogId))
-    }, []);
+    }, [blogId]);
 
 
     return (
