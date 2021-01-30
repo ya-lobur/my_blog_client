@@ -1,13 +1,12 @@
 import { reducerWithInitialState } from "typescript-fsa-reducers";
-import { setPostList } from "redux/actionCreators/blog";
+import { setPaginatedPostList } from "redux/actionCreators/blog";
+import { IPaginatedPostList } from "interfaces/post";
 
 export interface IBlogReducer {
-    posts: any;
+    paginatedPostList?: IPaginatedPostList;
 }
 
-const INITIAL_STATE: IBlogReducer = {
-    posts: [],
-};
+const INITIAL_STATE: IBlogReducer = {};
 
 export  default reducerWithInitialState(INITIAL_STATE)
-    .case(setPostList, (state, posts) => ({ ...state, posts }))
+    .case(setPaginatedPostList, (state, paginatedPostList) => ({ ...state, paginatedPostList }))
