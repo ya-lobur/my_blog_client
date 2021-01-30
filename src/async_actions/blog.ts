@@ -29,7 +29,7 @@ export function getPostList(blogId: number | string, page: number = 1) {
 export function getBlogInfo(blogId: number | string) {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`${BLOG_API_HOST}/blog${blogId}`);
+            const { data } = await axios.get(`${BLOG_API_HOST}/blog/${blogId}/`);
             dispatch(setBlogInfo(data));
             return Promise.resolve();
         }

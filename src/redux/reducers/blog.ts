@@ -4,8 +4,8 @@ import { IPaginatedPostList } from "interfaces/post";
 import { IBlogModel } from "interfaces/blog";
 
 export interface IBlogReducer {
-    paginatedPostList?: IPaginatedPostList;
-    blogInfo?: IBlogModel;
+    paginatedPostList?: IPaginatedPostList | null;
+    blogInfo?: IBlogModel | null;
 }
 
 const INITIAL_STATE: IBlogReducer = {};
