@@ -8,6 +8,7 @@ export interface IPostModel {
     liked_by: number[];
     author: { id: number, first_name: string, last_name: string };
     text_content?: string;
+    updated: string;
 }
 
 export interface IPaginatedPostList extends IDefaultPagination {

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { getPostList } from "async_actions/blog";
 import { useParams } from "react-router";
 import { setPaginatedPostList } from "redux/actionCreators/blog";
+import PostList from "pages/BlogDetail/components/PostList/PostList";
 
 const BlogDetail: FunctionComponent = () => {
 
@@ -21,7 +22,7 @@ const BlogDetail: FunctionComponent = () => {
 
 
     return (
-        <p className={classes.blog_detail}>Blog Detail</p>
+        <PostList blogId={blogId} />
     );
 }
 

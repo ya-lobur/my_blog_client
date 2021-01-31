@@ -12,6 +12,7 @@ const { REACT_APP_BLOG_API_HOST: BLOG_API_HOST } = process.env;
 export function getPostList(blogId: number | string, page: number = 1) {
     return async (dispatch) => {
         try {
+            dispatch(setPaginatedPostList(null))
             const response = await axios.get(`${BLOG_API_HOST}/blog/${blogId}/post-list/?page=${page}`);
             dispatch(setPaginatedPostList(response.data))
             return Promise.resolve()
