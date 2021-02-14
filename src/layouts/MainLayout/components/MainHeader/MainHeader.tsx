@@ -27,9 +27,19 @@ const MainHeader: FunctionComponent = () => {
                 </Col>
 
                 <Col>
-                    <Link to={RouteTemplates.LOGIN} className={classes.header_link} >
-                        <LoginOutlined />
-                    </Link>
+                    <Row>
+                        <Col span={11}>
+                            <Link to={RouteTemplates.LOGIN} className={classes.login_link}>
+                                Войти
+                            </Link>
+                        </Col>
+
+                        <Col span={11}>
+                            <Link to={RouteTemplates.REGISTRATION} className={classes.reg_link}>
+                                Зарегистрироваться
+                            </Link>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
 

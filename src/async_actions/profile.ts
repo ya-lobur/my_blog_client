@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IRegistrationData } from "interfaces/profile";
 
 const { REACT_APP_PROFILE_API_HOST: PROFILE_API_HOST } = process.env;
 
@@ -14,6 +15,17 @@ export function login(data: { email: string, password: string }) {
             return Promise.resolve()
         } catch (err) {
             return Promise.reject({ error: err.response, location: 'login' })
+        }
+    }
+}
+
+export function registration(data: IRegistrationData) {
+    return async () => {
+        try {
+            await axios.post(`${PROFILE_API_HOST}/register`, data)
+            return Promise.resolve()
+        } catch (err) {
+            return Promise.reject({ error: err.response, location: 'registration' })
         }
     }
 }
