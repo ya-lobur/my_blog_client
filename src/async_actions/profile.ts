@@ -1,5 +1,6 @@
 import axios from "axios";
 import { IRegistrationData } from "interfaces/profile";
+import { setProfile } from "redux/actionCreators/profile";
 
 const { REACT_APP_PROFILE_API_HOST: PROFILE_API_HOST } = process.env;
 
@@ -31,10 +32,10 @@ export function registration(data: IRegistrationData) {
 }
 
 export function getProfile() {
-    return async () => {
+    return async (dispatch) => {
         try {
             const response = await axios.get(`${PROFILE_API_HOST}/info`)
-            console.log(response.data)
+            dispatch(setProfile(response.data))
             return Promise.resolve()
         } catch (err) {
             return Promise.reject({ error: err.response, location: 'getProfile' })
