@@ -1,6 +1,6 @@
 export interface IBlogModel {
-    id?: number;
-    description?: string;
-    owner_id?: number;
+    id: number;
+    description: string;
+    owner: { id: number, first_name: string, last_name: string };
 }
 

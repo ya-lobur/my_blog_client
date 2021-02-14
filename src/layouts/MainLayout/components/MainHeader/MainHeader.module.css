@@ -1,6 +1,7 @@
 .main_header {
     background: #fafafa;
     border-bottom: #4d474730 1px solid;
+    height: auto;
 }
 
 .main_header .home_link {

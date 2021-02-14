@@ -11,6 +11,14 @@ const AppConfig: FunctionComponent = ({ children }) => {
     axios.defaults.xsrfHeaderName = "X-CSRFToken";
     axios.defaults.xsrfCookieName = "csrftoken";
 
+    axios.interceptors.request.use(function (config) {
+        // config.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+        config.headers.common['Access-Control-Allow-Credentials'] = true;
+        config.withCredentials = true
+
+        return config;
+    });
+
 
     return <>{children}</>
 }
