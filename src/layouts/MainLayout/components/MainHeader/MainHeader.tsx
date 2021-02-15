@@ -3,14 +3,15 @@ import { Col, Layout, Row } from "antd";
 import classes from './MainHeader.module.css'
 import { useRouteMatch } from "react-router";
 import { RouteTemplates } from "constants/routes";
-import { HomeFilled, HomeOutlined, LoginOutlined } from "@ant-design/icons";
+import { HomeFilled, HomeOutlined } from "@ant-design/icons";
 import { Link } from 'react-router-dom';
 import ExtraInfo from "layouts/MainLayout/components/MainHeader/components/ExtraInfo/ExtraInfo";
+import ProfileBar from "components/ProfileBar/ProfileBar";
 
 const MainHeader: FunctionComponent = () => {
 
     const { Header } = Layout;
-    const isMainPage = useRouteMatch({ path: RouteTemplates.ROOT, exact: true })
+    const isMainPage = useRouteMatch({ path: RouteTemplates.ROOT, exact: true });
 
 
     return (
@@ -26,20 +27,8 @@ const MainHeader: FunctionComponent = () => {
                     <ExtraInfo/>
                 </Col>
 
-                <Col>
-                    <Row>
-                        <Col span={11}>
-                            <Link to={RouteTemplates.LOGIN} className={classes.login_link}>
-                                Войти
-                            </Link>
-                        </Col>
-
-                        <Col span={11}>
-                            <Link to={RouteTemplates.REGISTRATION} className={classes.reg_link}>
-                                Зарегистрироваться
-                            </Link>
-                        </Col>
-                    </Row>
+                <Col span={3}>
+                    <ProfileBar/>
                 </Col>
             </Row>
 

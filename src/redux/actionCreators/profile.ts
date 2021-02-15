@@ -5,4 +5,4 @@ const prefix = 'PROFILE';
 const actionCreator = actionCreatorFactory();
 
 
-export const setProfile = actionCreator<IProfile>(`${prefix}_SET_PROFILE`);
+export const setProfile = actionCreator<IProfile | null>(`${prefix}_SET_PROFILE`);

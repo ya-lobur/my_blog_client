@@ -10,12 +10,25 @@ const { REACT_APP_PROFILE_API_HOST: PROFILE_API_HOST } = process.env;
  * @returns {Promise<void>}
  */
 export function login(data: { email: string, password: string }) {
-    return async () => {
+    return async (dispatch) => {
         try {
-            await axios.post(`${PROFILE_API_HOST}/login`, data)
-            return Promise.resolve()
+            const response = await axios.post(`${PROFILE_API_HOST}/login`, data);
+            dispatch(setProfile(response.data));
+            return Promise.resolve();
         } catch (err) {
-            return Promise.reject({ error: err.response, location: 'login' })
+            return Promise.reject({ error: err.response, location: 'login' });
+        }
+    }
+}
+
+export function logout() {
+    return async (dispatch) => {
+        try {
+            await axios.post(`${PROFILE_API_HOST}/logout`);
+            dispatch(setProfile(null));
+            return Promise.resolve();
+        } catch (err) {
+            return Promise.reject({ error: err.response, location: 'logout' });
         }
     }
 }
