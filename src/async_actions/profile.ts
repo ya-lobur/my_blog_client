@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IRegistrationData } from "interfaces/profile";
-import { setProfile } from "redux/actionCreators/profile";
+import { setProfileData } from "redux/actionCreators/profile";
 
 const { REACT_APP_PROFILE_API_HOST: PROFILE_API_HOST } = process.env;
 
@@ -13,7 +13,7 @@ export function login(data: { email: string, password: string }) {
     return async (dispatch) => {
         try {
             const response = await axios.post(`${PROFILE_API_HOST}/login`, data);
-            dispatch(setProfile(response.data));
+            dispatch(setProfileData(response.data));
             return Promise.resolve();
         } catch (err) {
             return Promise.reject({ error: err.response, location: 'login' });
@@ -25,7 +25,7 @@ export function logout() {
     return async (dispatch) => {
         try {
             await axios.post(`${PROFILE_API_HOST}/logout`);
-            dispatch(setProfile(null));
+            dispatch(setProfileData(null));
             return Promise.resolve();
         } catch (err) {
             return Promise.reject({ error: err.response, location: 'logout' });
@@ -48,10 +48,10 @@ export function getProfile() {
     return async (dispatch) => {
         try {
             const response = await axios.get(`${PROFILE_API_HOST}/info`)
-            dispatch(setProfile(response.data))
+            dispatch(setProfileData(response.data))
             return Promise.resolve()
         } catch (err) {
-            return Promise.reject({ error: err.response, location: 'getProfile' })
+            dispatch(setProfileData(null));
         }
     }
 }

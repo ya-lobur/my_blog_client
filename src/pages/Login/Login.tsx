@@ -11,7 +11,6 @@ const Login: FunctionComponent = () => {
 
     const  onFinish = async (values) => {
         await dispatch(login(values))
-        await dispatch(getProfile())
     };
 
 
