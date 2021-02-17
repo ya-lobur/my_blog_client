@@ -33,13 +33,13 @@ export function logout() {
     }
 }
 
-export function registration(data: IRegistrationData) {
+export function register(data: IRegistrationData) {
     return async () => {
         try {
             await axios.post(`${PROFILE_API_HOST}/register`, data)
             return Promise.resolve()
         } catch (err) {
-            return Promise.reject({ error: err.response, location: 'registration' })
+            return Promise.reject({ error: err.response, location: 'register' })
         }
     }
 }

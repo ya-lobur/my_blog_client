@@ -2,16 +2,20 @@ import React, { FunctionComponent } from 'react';
 import { Form, Input, Button, Typography, Divider } from 'antd';
 import { useDispatch } from "react-redux";
 import classes from './Registration.module.css'
-import { registration } from "async_actions/profile";
+import { register } from "async_actions/profile";
 import { IRegistrationData } from "interfaces/profile";
+import { useHistory } from "react-router";
+import { RouteTemplates } from "constants/routes";
 
 
 const Registration: FunctionComponent = () => {
 
-    const dispatch = useDispatch();
+    const history = useHistory()
+    const dispatch = useDispatch<(f) => Promise<any>>();
 
     const onFinish = async (values: IRegistrationData) => {
-        dispatch(registration(values))
+        await dispatch(register(values));
+        history.push(RouteTemplates.LOGIN);
     };
 
 
@@ -19,7 +23,7 @@ const Registration: FunctionComponent = () => {
         <Form layout={'vertical'} name="registration" className={classes.registration_form} onFinish={onFinish}>
             <div>
                 <Typography.Title level={2}>Регистрация</Typography.Title>
-                <Divider />
+                <Divider/>
             </div>
 
             <Form.Item label="E-mail" name="email"
