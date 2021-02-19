@@ -4,6 +4,7 @@ export interface IRegistrationData {
     password_confirm: string;
     first_name: string;
     last_name?: string;
+    birthday?: string | null;
 }
 
 export interface IProfile {
@@ -11,4 +12,5 @@ export interface IProfile {
     email: string;
     first_name: string;
     last_name: string;
+    birthday: string | null;
 }
