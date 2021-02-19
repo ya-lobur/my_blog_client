@@ -4,9 +4,13 @@ import PostDetail from "pages/post/PostDetail/PostDetail";
 import PostWizard from "pages/post/wizard/PostWizard/PostWizard";
 import BlogDetail from "pages/BlogDetail/BlogDetail";
 import NotFoundPage from "pages/NotFoundPage/NotFoundPage";
+import Login from "pages/Login/Login";
+import Registration from "pages/Registration/Registration";
 
 export enum RouteTemplates {
     ROOT = '/',
+    LOGIN = '/login/',
+    REGISTRATION = '/registration/',
     NOT_FOUND = '/404/',
     BLOG_DETAIL = '/blog/:blogId/',
     POST_DETAIL = '/post/:postId/',
@@ -24,6 +28,14 @@ const routes: IAppRoute[] = [
     {
         path: RouteTemplates.ROOT,
         component: IndexPage
+    },
+    {
+        path: RouteTemplates.REGISTRATION,
+        component: Registration
+    },
+        {
+        path: RouteTemplates.LOGIN,
+        component: Login
     },
     {
         path: RouteTemplates.POST_DETAIL,

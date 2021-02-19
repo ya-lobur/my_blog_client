@@ -1,10 +1,12 @@
+
 .main_header {
     background: #fafafa;
     border-bottom: #4d474730 1px solid;
     height: auto;
+    padding-right: 0;
 }
 
-.main_header .home_link {
+.main_header .header_link {
     font-size: 22px;
     color: #181818;
 }

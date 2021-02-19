@@ -1,8 +1,10 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import moment from "moment";
 import axios from "axios";
 import 'moment/locale/ru';
 import { setTwoToneColor } from '@ant-design/icons';
+import { useDispatch } from "react-redux";
+import { getProfile } from "async_actions/profile";
 
 const AppConfig: FunctionComponent = ({ children }) => {
 
@@ -10,14 +12,13 @@ const AppConfig: FunctionComponent = ({ children }) => {
     moment.locale('ru');
     axios.defaults.xsrfHeaderName = "X-CSRFToken";
     axios.defaults.xsrfCookieName = "csrftoken";
+    axios.defaults.withCredentials = true;
 
-    axios.interceptors.request.use(function (config) {
-        // config.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-        config.headers.common['Access-Control-Allow-Credentials'] = true;
-        config.withCredentials = true
+    const dispatch = useDispatch();
 
-        return config;
-    });
+    useEffect(() => {
+        dispatch(getProfile());
+    }, [dispatch]);
 
 
     return <>{children}</>

@@ -6,24 +6,33 @@ import { RouteTemplates } from "constants/routes";
 import { HomeFilled, HomeOutlined } from "@ant-design/icons";
 import { Link } from 'react-router-dom';
 import ExtraInfo from "layouts/MainLayout/components/MainHeader/components/ExtraInfo/ExtraInfo";
+import ProfileBar from "components/ProfileBar/ProfileBar";
 
 const MainHeader: FunctionComponent = () => {
 
     const { Header } = Layout;
-    const isMainPage = useRouteMatch({ path: RouteTemplates.ROOT, exact: true })
+    const isMainPage = useRouteMatch({ path: RouteTemplates.ROOT, exact: true });
 
 
     return (
         <Header className={classes.main_header}>
-                <Row>
-                    <Col>
-                        <Link to={RouteTemplates.ROOT} className={classes.home_link}>
-                            {isMainPage ? <HomeOutlined/> : <HomeFilled/>}
-                        </Link>
-                    </Col>
+            <Row justify={'space-between'}>
+                <Col>
+                    <Link to={RouteTemplates.ROOT} className={classes.header_link}>
+                        {isMainPage ? <HomeOutlined/> : <HomeFilled/>}
+                    </Link>
+                </Col>
 
-                </Row>
-            <ExtraInfo/>
+                <Col>
+                    <ExtraInfo/>
+                </Col>
+
+                <Col span={3}>
+                    <ProfileBar/>
+                </Col>
+            </Row>
+
+
         </Header>
     );
 }
