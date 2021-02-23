@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "redux/reducers/rootReducer";
 import { getCertainPost, likePost } from "async_actions/post";
-import { Button, Card, Col, Divider, Row, Space } from "antd";
+import { Button, Card, Col, Divider, Image, Row, Space } from "antd";
 import classes from './PostDetail.module.css'
 import { Typography } from 'antd';
 import { HeartTwoTone } from "@ant-design/icons";
@@ -20,7 +20,6 @@ const PostDetail: FunctionComponent = () => {
     }, [postId]);
 
 
-
     return (
         <div className={classes.post_detail}>
             {currentPost && (
@@ -28,6 +27,13 @@ const PostDetail: FunctionComponent = () => {
                       extra={`${currentPost.author?.last_name} ${currentPost.author?.first_name}`}
 
                 >
+
+                    <Row justify={'center'}>
+                        <Col span={24}>
+                            {currentPost.image && <Image src={currentPost.image} wrapperClassName={classes.image}/>}
+                        </Col>
+                    </Row>
+
                     <Paragraph>{currentPost.text_content}</Paragraph>
 
                     <Divider/>

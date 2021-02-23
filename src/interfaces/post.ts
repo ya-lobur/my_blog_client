@@ -9,6 +9,7 @@ export interface IPostModel {
     author: { id: number, first_name: string, last_name: string };
     text_content?: string;
     updated: string;
+    image?: string;
 }
 
 export interface IPaginatedPostList extends IDefaultPagination {
