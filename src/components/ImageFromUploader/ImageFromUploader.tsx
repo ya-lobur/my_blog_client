@@ -18,17 +18,17 @@ const ImageFromUploader: FunctionComponent<IImageFromUploader> = (props) => {
     }
 
 
-    function beforeUpload(file) {
-        const isImage = file && file['type'].split('/')[0] === 'image';
-        if (!isImage) {
-            console.error('You can only upload image file!');
-        }
-        const isLt5M = file.size / 1024 / 1024 < 5;
-        if (!isLt5M) {
-            console.error('Image must smaller than 5MB!');
-        }
-        return isImage && isLt5M;
-    }
+    // function beforeUpload(file) {
+    //     const isImage = file && file['type'].split('/')[0] === 'image';
+    //     if (!isImage) {
+    //         console.error('You can only upload image file!');
+    //     }
+    //     const isLt5M = file.size / 1024 / 1024 < 5;
+    //     if (!isLt5M) {
+    //         console.error('Image must smaller than 5MB!');
+    //     }
+    //     return isImage && isLt5M;
+    // }
 
 
     return (
