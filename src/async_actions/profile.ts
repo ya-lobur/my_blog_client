@@ -16,7 +16,7 @@ export function login(data: { email: string, password: string }) {
             dispatch(setProfileData(response.data));
             return Promise.resolve();
         } catch (err) {
-            return Promise.reject({ error: err.response, location: 'login' });
+            return Promise.reject({ error: err.response.data.detail, location: 'login' });
         }
     }
 }
