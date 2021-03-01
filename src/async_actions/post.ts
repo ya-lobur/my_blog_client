@@ -62,15 +62,28 @@ export function likePost(postId: number | string) {
 /**
  * Делает запрос на создание поста
  * @param {IPostModel} post
+ * @param image
  * @returns {Promise<Required<IPostModel>>}
  */
-export async function createPost(post: IPostModel) {
+export async function createPost(post: IPostModel, image?: File | null) {
     try {
-        const response = await axios.post(`${BLOG_API_HOST}/post/`, post)
-        const createdPost: Required<IPostModel> = response.data
+        const formData = new FormData();
 
-        return Promise.resolve(createdPost)
+        for (const postKey in post) {
+            if (post[postKey]) {
+                formData.append(postKey, post[postKey]);
+            }
+        }
+
+        if (image) {
+            formData.append('image', image);
+        }
+
+        const response = await axios.post(`${BLOG_API_HOST}/post/`, formData);
+        const createdPost: Required<IPostModel> = response.data;
+
+        return Promise.resolve(createdPost);
     } catch (err) {
-        return Promise.reject({ error: err.response, location: 'createPost' })
+        return Promise.reject({ error: err.response, location: 'createPost' });
     }
 }

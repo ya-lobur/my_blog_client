@@ -8,6 +8,7 @@ import { createPost, getCertainPost } from "async_actions/post";
 import { useDispatch } from "react-redux";
 import { IPostModel } from "interfaces/post";
 import { getSubmitBtnTitle, getTitle } from "pages/post/wizard/PostWizard/utils";
+import ImageFromUploader from "components/ImageFromUploader/ImageFromUploader";
 
 const { Title } = Typography
 
@@ -18,6 +19,8 @@ const PostWizard: FunctionComponent = () => {
     const dispatch = useDispatch<(f) => Promise<Required<IPostModel>>>();
     const { postId } = useParams<{ postId: string }>();
     const [wizardMode, setWizardMode] = useState<WizardModeType>(undefined);
+
+    const [image, setImage] = useState<File | null>(null);
 
     useEffect(() => {
         form.resetFields();
@@ -34,7 +37,7 @@ const PostWizard: FunctionComponent = () => {
 
     async function onSubmitHandler(values) {
         if (wizardMode === "create") {
-            await createPost(values)
+            await createPost(values, image)
         }
     }
 
@@ -60,6 +63,14 @@ const PostWizard: FunctionComponent = () => {
                             <Col span={24}>
                                 <Form.Item name={'description'} label={'Описание'}>
                                     <Input type={"text"} size={"large"}/>
+                                </Form.Item>
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            <Col span={24}>
+                                <Form.Item>
+                                    <ImageFromUploader onFileChange={setImage}/>
                                 </Form.Item>
                             </Col>
                         </Row>
