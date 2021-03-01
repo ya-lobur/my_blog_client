@@ -19,7 +19,6 @@ const ImageFromUploader: FunctionComponent<IImageFromUploader> = (props) => {
 
 
     function beforeUpload(file) {
-        console.log(111)
         const isImage = file && file['type'].split('/')[0] === 'image';
         if (!isImage) {
             console.error('You can only upload image file!');
