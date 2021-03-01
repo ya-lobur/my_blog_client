@@ -33,7 +33,7 @@ export function logout() {
     }
 }
 
-export function register(data: IRegistrationData) {
+export function signUp(data: IRegistrationData) {
     return async () => {
         try {
             await axios.post(`${PROFILE_API_HOST}/register`, data)
