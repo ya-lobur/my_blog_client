@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { Form, Input, Button, Typography, Divider } from 'antd';
+import { Form, Input, Button, Typography, Divider, notification } from 'antd';
 import { useDispatch } from "react-redux";
 import classes from './Registration.module.css'
-import { register } from "async_actions/profile";
+import { signUp } from "async_actions/profile";
 import { IRegistrationData } from "interfaces/profile";
 import { useHistory } from "react-router";
 import { RouteTemplates } from "constants/routes";
@@ -14,7 +14,12 @@ const Registration: FunctionComponent = () => {
     const dispatch = useDispatch<(f) => Promise<any>>();
 
     const onFinish = async (values: IRegistrationData) => {
-        await dispatch(register(values));
+        await dispatch(signUp(values));
+        notification.open({
+            message: 'Завершение регистрации',
+            description: 'Мы отправили вам на почту письмо, перейдите по ссылке в нем чтобы завершить регистрацию',
+            duration: 10
+        });
         history.push(RouteTemplates.LOGIN);
     };
 
